@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Paper - Sitare University</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        header {
+    background: linear-gradient(to right, #2980b9, #6dd5fa);
+    color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    text-align: center;
+    font-size: 36px;
+    letter-spacing: 2px;
+}
+
+header nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+header nav a {
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+header nav a:hover {
+    background-color: #fff;
+    color: #2980b9;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+/* Hero Section */
+.hero {
+    background: url('/static/images/hero-bg.jpg') no-repeat center center/cover;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    background-blend-mode: overlay;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.hero h2 {
+    font-size: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Main Content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 32px;
+    color: #2c3e50;
+    border-bottom: 4px solid #e74c3c;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <header class="bg-black bg-opacity-50 px-6 py-4">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center">
+                <!-- App Logo -->
+                <div class="w-16 h-16 logo-spin">
+                    <img src="su-news2.png" alt="App Logo" class="rounded-full">
+                </div>
+
+                <!-- Navigation -->
+                <nav class="hidden lg:flex space-x-8">
+                    <a href="{{ url_for('homepage') }}" class="nav-link text-white text-lg font-medium hover:text-blue-300 transition-colors">Home</a>
+
+                    <a href="{{ url_for('exam_papers') }}" class="nav-link text-white text-lg font-medium hover:text-blue-300 transition-colors">Exam Papers</a>
+                    <a href="{{ url_for('hackathon_news') }}" class="nav-link text-white text-lg font-medium hover:text-blue-300 transition-colors">Hackathon</a>
+                    <a href="{{ url_for('upload') }}" class="nav-link text-white text-lg font-medium hover:text-blue-300 transition-colors">Upload</a>
+                    <a href="{{ url_for('contact') }}" class="nav-link text-white text-lg font-medium hover:text-blue-300 transition-colors">Contact Us</a>
+                </nav>
+                
+
+                <!-- University Logo -->
+                <div class="w-16 h-16">
+                    <img src="sitarelogo.jpeg" alt="Sitare University Logo" class="rounded-full">
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+        <main class="container mx-auto px-4 py-8">
+            <div class="max-w-3xl mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-10">
+                    <h1 class="text-3xl font-bold mb-2">Upload Exam Paper</h1>
+                    <p class="text-gray-600">Share exam papers to help other students prepare better</p>
+                </div>
+    
+                <!-- Upload Form -->
+                <div class="bg-white rounded-lg shadow-md p-8">
+                    <div class="space-y-6">
+                        <h2 class="text-xl font-semibold border-b pb-2">Upload File</h2>
+                        
+                        <div class="space-y-4">
+                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                                <input type="file" required name="file" accept=".pdf" id="paper-file">
+                                <label for="paper-file" class="cursor-pointer">
+                                    <div class="space-y-2">
+                                        <div class="text-blue-600">Click to upload or drag and drop</div>
+                                        <div class="text-sm text-gray-500">PDF files only (Max. 10MB)</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Submit Section -->
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <input type="checkbox" required id="terms" class="rounded text-blue-600">
+                            <label for="terms" class="ml-2 text-sm text-gray-600">
+                                I confirm that this paper is authentic and I have permission to share it
+                            </label>
+                        </div>
+                        
+                        <div class="flex space-x-4">
+                            <button type="submit" class="flex-1 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700">
+                                Upload Paper
+                            </button>
+                            <button type="button" class="px-6 py-3 border rounded-lg hover:bg-gray-50">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </form>
+    
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 mt-12 py-6">
+        <div class="container mx-auto px-4 text-center text-gray-600">
+            <p>© 2024 Sitare University. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitare University</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> /*for footer*/
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            filter: brightness(0.7);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .logo-spin {
+            animation: spin 20s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .glow {
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(255,255,255,0.5); }
+            50% { text-shadow: 0 0 20px rgba(255,255,255,0.8); }
+            100% { text-shadow: 0 0 5px rgba(255,255,255,0.5); }
+        }
+
+         /* General styles */
+         body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Roboto', sans-serif;
+            color: #2c3e50;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #e74c3c;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(to right, #2980b9, #6dd5fa);
+            color: #fff;
+            padding: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            text-align: center;
+            font-size: 36px;
+            letter-spacing: 2px;
+        }
+        
+        header nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        header nav a {
+            color: #fff;
+            font-size: 18px;
+            padding: 10px;
+            text-transform: uppercase;
+        }
+        
+        header nav a:hover {
+            background-color: #fff;
+            color: #2980b9;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url('/static/images/hero-bg.jpg') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            background-blend-mode: overlay;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+        
+        .hero h2 {
+            font-size: 48px;
+            font-weight: bold;
+            text-transform: uppercase;
+            animation: fadeIn 2s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: #2c3e50;
+            border-bottom: 4px solid #e74c3c;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        /* Exam Papers Section */
+        .exam-papers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .exam-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .exam-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .exam-card h3 {
+            color: #2980b9;
+            margin-bottom: 10px;
+        }
+        
+        .exam-card i {
+            font-size: 40px;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+        
+        /* Hackathon News Section */
+        .hackathon-news {
+            background-color: #ecf0f1;
+            padding: 60px 0;
+        }
+        
+        .hackathon-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .hackathon-card:hover {
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hackathon-card img {
+            width: 80px;
+            height: 80px;
+            margin-right: 20px;
+            border-radius: 50%;
+        }
+        
+        .hackathon-card h4 {
+            margin: 0;
+            color: #2c3e50;
+        }
+        
+        .hackathon-card p {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+        
+        footer a {
+            color: #e74c3c;
+        }
+        
+        footer a:hover {
+            color: #fff;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+        
+            .hero h2 {
+                font-size: 36px;
+            }
+        
+            .exam-papers {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    
+        </style>
+
+
+
+
+
+<body class="min-h-screen overflow-x-hidden">
+    <!-- Video Background -->
+    <video autoplay muted loop class="video-background">
+        <source src="{{ url_for('static', filename='images/bv4.mov') }}" type="video/mp4">
+    </video>
+
+    <!-- Main Content Container -->
+    <div class="relative z-10">
+        <!-- Header with Logos -->
+        <header class="bg-black bg-opacity-50 px-6 py-4">
+            <div class="container mx-auto">
+                <div class="flex justify-between items-center">
+                    <!-- App Logo -->
+                    <div class="w-16 h-16 logo-spin">
+                        <img src="{{ url_for('static', filename='images/su-news2.png') }}" alt="App Logo" class="rounded-full">
+                    </div>
+
+                    <!-- Navigation -->
+                    <nav class="hidden lg:flex space-x-8">
+                        <a href="{{ url_for('homepage') }}" class="nav-link text-white text-lg font-medium hover:text-blue-300 transition-colors">Home</a>
+
+                        <a href="{{ url_for('exam_papers') }}" class="nav-link text-white text-lg font-medium hover:text-blue-300 transition-colors">Exam Papers</a>
+                        <a href="{{ url_for('hackathon_news') }}" class="nav-link text-white text-lg font-medium hover:text-blue-300 transition-colors">Hackathon</a>
+                        <a href="{{ url_for('upload') }}" class="nav-link text-white text-lg font-medium hover:text-blue-300 transition-colors">Upload</a>
+                        <a href="{{ url_for('contact') }}" class="nav-link text-white text-lg font-medium hover:text-blue-300 transition-colors">Contact Us</a>
+                    </nav>
+                    
+
+                    <!-- University Logo -->
+                    <div class="w-16 h-16">
+                        <img src="{{ url_for('static', filename='images/sitarelogo.jpeg') }}" alt="Sitare University Logo" class="rounded-full">
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="lg:hidden text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <main class="min-h-screen flex items-center justify-center text-white px-6">
+            <div class="text-center">
+                <h1 class="text-6xl font-bold mb-6 glow" style="margin-top: 15%; color: aqua;">Welcome to Sitare University</h1>
+                <p class="text-xl mb-8 max-w-2xl mx-auto">Empowering minds, shaping futures. Access resources, papers, and opportunities all in one place.</p>
+                
+                    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-12">
+        <!-- Mission Section -->
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6"  style="margin-top: 15%; color: blueviolet;">Our Mission</h2>
+            <p class="text-lg text-gray-600 leading-relaxed" style="color: #f0f0f5;">
+                The Sitare University Resource Hub is dedicated to empowering students by providing seamless access to valuable academic resources and keeping them informed about exciting opportunities. We believe in fostering academic excellence and innovation through easy access to knowledge and collaborative experiences.
+            </p>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid md:grid-cols-3 gap-8 mb-16" >
+            <!-- Previous Year Papers -->
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <div class="text-blue-600 text-4xl mb-4">📚</div>
+                <h3 class="text-xl font-bold text-gray-800 mb-3">Previous Year Papers</h3>
+                <p class="text-gray-600">
+                    Access a comprehensive collection of previous year examination papers to enhance your preparation and understanding of exam patterns.
+                </p>
+            </div>
+
+            <!-- Hackathons -->
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <div class="text-blue-600 text-4xl mb-4">💻</div>
+                <h3 class="text-xl font-bold text-gray-800 mb-3">Hackathons</h3>
+                <p class="text-gray-600">
+                    Stay updated with upcoming hackathons, coding competitions, and technical events to showcase your skills and win exciting prizes.
+                </p>
+            </div>
+
+            <!-- Events -->
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <div class="text-blue-600 text-4xl mb-4">🎯</div>
+                <h3 class="text-xl font-bold text-gray-800 mb-3">Campus Events</h3>
+                <p class="text-gray-600">
+                    Never miss important campus events, workshops, seminars, and cultural activities happening at Sitare University.
+                </p>
+            </div>
+        </div>
+                
+                
+                
+                <!-- Feature Cards -->
+                <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mt-12" style="margin-top:15% ;">
+                    <!-- Exam Papers Card -->
+                    <div class="bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-6 transform hover:scale-105 transition-transform floating">
+                        <div class="text-4xl mb-4">📚</div>
+                        <h3 class="text-xl font-semibold mb-2" style="color: #6dd5fa;">Exam Papers</h3>
+                        <p class="text-sm">Access previous year papers and study materials</p>
+                        <a href="{{ url_for('exam_papers') }}"class="inline-block mt-4 px-6 py-2 bg-blue-600 rounded-full hover:bg-blue-700 transition-colors">
+                            Browse Papers
+                        </a>
+                    </div>
+
+                    <!-- Hackathons Card -->
+                    <div class="bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-6 transform hover:scale-105 transition-transform floating" style="animation-delay: 0.2s;">
+                        <div class="text-4xl mb-4">💻</div>
+                        <h3 class="text-xl font-semibold mb-2" style="color: #6dd5fa;">Hackathons</h3>
+                        <p class="text-sm">Participate in exciting coding challenges</p>
+                        <a href="{{ url_for('hackathon_news') }}"class="inline-block mt-4 px-6 py-2 bg-blue-600 rounded-full hover:bg-blue-700 transition-colors">
+                            View Events
+                        </a>
+                    </div>
+
+                    <!-- Resources Card -->
+                    <div class="bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-6 transform hover:scale-105 transition-transform floating" style="animation-delay: 0.4s;">
+                        <div class="text-4xl mb-4">🎓</div>
+                        <h3 class="text-xl font-semibold mb-2" style="color: #6dd5fa;">Resources</h3>
+                        <p class="text-sm">Download study materials and resources</p>
+                        <a href="#" class="inline-block mt-4 px-6 py-2 bg-blue-600 rounded-full hover:bg-blue-700 transition-colors">
+                            Explore More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Mobile Navigation Menu (Hidden by default) -->
+    <div class="lg:hidden fixed inset-0 bg-black bg-opacity-90 z-50 hidden">
+        <div class="flex flex-col items-center justify-center h-full space-y-8">
+            <a href="#about" class="text-white text-xl">About</a>
+            <a href="find-papers.html" class="text-white text-xl">Exam Papers</a>
+            <a href="#hackathon" class="text-white text-xl">Hackathon</a>
+            <a href="#upload" class="text-white text-xl">Upload</a>
+            <a href="#contact" class="text-white text-xl">Contact Us</a>
+        </div>
+    </div>
+
+
+    <section class="hero" >
+        <h2 style="color: rgb(23, 151, 231);">Empowering Students for the Future</h2>
+    </section>
+
+    <footer class="bg-blue-900 text-white py-12">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- University Logo and Description -->
+            <div>
+                <img src="sitarelogo.jpeg" alt="Sitare University Logo" class="h-16 mb-4" style="border-radius: 50%;">
+                <p class="text-sm">Empowering minds, shaping futures through excellence in education and research.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="font-bold mb-4" style="color: #060606;">Quick Links</h4>
+                <ul>
+                    <li><a href="#" class="hover:text-blue-300">Admissions</a></li>
+                    <li><a href="#" class="hover:text-blue-300">Academic Programs</a></li>
+                    <li><a href="#" class="hover:text-blue-300">Research</a></li>
+                    <li><a href="#" class="hover:text-blue-300">Campus Life</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Information -->
+            <div>
+                <h4 class="font-bold mb-4" style="color: #060606;">Contact Us</h4>
+                <address class="not-italic">
+                    Sitare University<br>
+                    123 Academic Avenue<br>
+                    City, State 12345<br>
+                    Phone: (555) 123-4567<br>
+                    Email: info@sitareuniversity.edu
+                </address>
+            </div>
+
+            <!-- Social Media Links -->
+            <div>
+                <h4 class="font-bold mb-4" style="color: #060606;">Connect With Us</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-white hover:text-blue-300"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-white hover:text-blue-300"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white hover:text-blue-300"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white hover:text-blue-300"><i class="fab fa-linkedin"></i></a>
+                </div>
+                
+                <!-- Newsletter Signup -->
+                <div class="mt-6">
+                    <h4 class="font-bold mb-2" style="color: #060606;">Subscribe to Newsletter</h4>
+                    <form class="flex">
+                        <input 
+                            type="email" 
+                            placeholder="Enter your email" 
+                            class="px-2 py-1 w-full rounded-l text-black"
+                        >
+                        <button 
+                            type="submit" 
+                            class="bg-blue-500 text-white px-4 py-1 rounded-r"
+                        >
+                            Sign Up
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <div class="text-center mt-8 pt-4 border-t border-blue-700">
+            <p class="text-sm">&copy; 2024 Sitare University. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

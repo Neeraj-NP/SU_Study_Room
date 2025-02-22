@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events & Hackathons - Sitare University</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        header {
+    background: linear-gradient(to right, #2980b9, #6dd5fa);
+    color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    text-align: center;
+    font-size: 36px;
+    letter-spacing: 2px;
+}
+
+header nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+header nav a {
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+header nav a:hover {
+    background-color: #fff;
+    color: #2980b9;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <header class="bg-black bg-opacity-50 px-6 py-4">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center">
+                <!-- App Logo -->
+                <div class="w-16 h-16 logo-spin">
+                    <img src="su-news2.png" alt="App Logo" class="rounded-full">
+                </div>
+
+                <nav class="hidden lg:flex space-x-8">
+                    <a href="{{ url_for('homepage') }}" class="nav-link text-white text-lg font-medium hover:text-blue-300 transition-colors">Home</a>
+
+                    <a href="{{ url_for('exam_papers') }}" class="nav-link text-white text-lg font-medium hover:text-blue-300 transition-colors">Exam Papers</a>
+                    <a href="{{ url_for('hackathon_news') }}" class="nav-link text-white text-lg font-medium hover:text-blue-300 transition-colors">Hackathon</a>
+                    <a href="{{ url_for('upload') }}" class="nav-link text-white text-lg font-medium hover:text-blue-300 transition-colors">Upload</a>
+                    <a href="{{ url_for('contact') }}" class="nav-link text-white text-lg font-medium hover:text-blue-300 transition-colors">Contact Us</a>
+                </nav>
+                
+
+                <!-- University Logo -->
+                <div class="w-16 h-16">
+                    <img src="sitarelogo.jpeg" alt="Sitare University Logo" class="rounded-full">
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Featured Event -->
+    <section class="relative bg-blue-700 text-white py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl">
+                <div class="mb-2 inline-block bg-yellow-500 text-blue-900 px-4 py-1 rounded-full font-medium">
+                    Featured Event
+                </div>
+                <h1 class="text-4xl font-bold mb-4">Bhagavad Gita Hackathon 2024</h1>
+                <p class="text-xl mb-6">Join us for 36 hours of coding, innovation, and exciting challenges!</p>
+                <div class="flex space-x-8 mb-8">
+                    <div>
+                        <div class="text-blue-200">Date</div>
+                        <div class="font-semibold">Jan 15-16, 2025</div>
+                    </div>
+                    <div>
+                        <div class="text-blue-200">Venue</div>
+                        <div class="font-semibold">Room No. B-103</div>
+                    </div>
+                    <div>
+                        <div class="text-blue-200">Prize Pool</div>
+                        <div class="font-semibold">₹40,000</div>
+                    </div>
+                </div>
+                <button class="bg-white text-blue-700 px-8 py-3 rounded-lg font-medium hover:bg-blue-50">
+                    Register Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events Section -->
+    <section id="upcoming" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12">Upcoming Events</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Event Card 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/api/placeholder/400/200" alt="AI Workshop" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 mb-4">
+                            <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded">
+                                Workshop
+                            </span>
+                            <span class="text-gray-500">Dec 20, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">AI & Machine Learning Workshop</h3>
+                        <p class="text-gray-600 mb-4">Learn the fundamentals of AI and ML with hands-on training.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-medium">Free Entry</span>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                                Register
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="codegeist.png" alt="Coding Competition" class="w-full h-48 object-cover" >
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded">
+                                Competition
+                            </span>
+                            <span class="text-gray-500">Dec 25, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">codegeist 2024</h3>
+                        <p class="text-gray-600 mb-4">Competitive programming contest with exciting challenges.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-medium">₹200 Entry</span>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" 
+                                    onclick="window.location.href='https://codegeist.devpost.com/?ref_feature=challenge&ref_medium=discover'">
+                                    Register
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/api/placeholder/400/200" alt="Tech Talk" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 mb-4">
+                            <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded">
+                                Tech Talk
+                            </span>
+                            <span class="text-gray-500">Jan 5, 2025</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Future of Web Development</h3>
+                        <p class="text-gray-600 mb-4">Industry experts discuss emerging web technologies.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-medium">Free Entry</span>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                                Register
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Past Events Gallery -->
+    <section id="gallery" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12">Event Gallery</h2>
+            
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Gallery Item 1 -->
+                <div class="relative group">
+                    <img src="/api/placeholder/300/300" alt="Hackathon 2023" class="w-full h-64 object-cover rounded-lg">
+                    <div class="absolute inset-0 bg-blue-900 bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                        <div class="text-white text-center p-4">
+                            <h3 class="font-semibold">Hackathon 2023</h3>
+                            <p class="text-sm">Over 200 participants</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="relative group">
+                    <img src="/api/placeholder/300/300" alt="AI Workshop" class="w-full h-64 object-cover rounded-lg">
+                    <div class="absolute inset-0 bg-blue-900 bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                        <div class="text-white text-center p-4">
+                            <h3 class="font-semibold">AI Workshop</h3>
+                            <p class="text-sm">Learning ML basics</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- More Gallery Items -->
+                <div class="relative group">
+                    <img src="/api/placeholder/300/300" alt="Tech Talk" class="w-full h-64 object-cover rounded-lg">
+                    <div class="absolute inset-0 bg-blue-900 bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                        <div class="text-white text-center p-4">
+                            <h3 class="font-semibold">Tech Talk Series</h3>
+                            <p class="text-sm">Industry experts</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <img src="/api/placeholder/300/300" alt="Coding Competition" class="w-full h-64 object-cover rounded-lg">
+                    <div class="absolute inset-0 bg-blue-900 bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                        <div class="text-white text-center p-4">
+                            <h3 class="font-semibold">Coding Competition</h3>
+                            <p class="text-sm">Student showcase</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Past Events Section -->
+    <section id="past" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12">Past Events</h2>
+            
+            <!-- Timeline -->
+            <div class="space-y-8">
+                <!-- Timeline Item -->
+                <div class="flex">
+                    <div class="w-24 text-right pr-8">
+                        <div class="text-gray-500">Nov 2024</div>
+                    </div>
+                    <div class="w-px bg-gray-300"></div>
+                    <div class="flex-1 pl-8 pb-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-semibold mb-2">HackCBS Hackathon</h3>
+                            <p class="text-gray-600 mb-4">
+                                A comprehensive workshop on blockchain technology and its applications.
+                                Over 150 students participated and learned about cryptocurrency fundamentals.
+                            </p>
+                            <div class="flex space-x-4">
+                                <img src="/api/placeholder/100/100" alt="Event Photo" class="w-24 h-24 rounded object-cover">
+                                <img src="/api/placeholder/100/100" alt="Event Photo" class="w-24 h-24 rounded object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- More Timeline Items -->
+                <div class="flex">
+                    <div class="w-24 text-right pr-8">
+                        <div class="text-gray-500">Sept 2024</div>
+                    </div>
+                    <div class="w-px bg-gray-300"></div>
+                    <div class="flex-1 pl-8 pb-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-semibold mb-2">Smart India Hackathon</h3>
+                            <p class="text-gray-600 mb-4">
+                                Students showcased their innovative Ideas.
+                                Winners received internship opportunities with leading tech companies.
+                            </p>
+                            <div class="flex space-x-4" style="gap: 8rem;"">
+                                <img src="hackathon1.jpg" alt="Event Photo" class="w-24 h-24 rounded object-cover" style="height: 500px; width: 500px;">
+                                <img src="hackathon2.jpg" alt="Event Photo" class="w-24 h-24 rounded object-cover" style="height: 500px; width: 500px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 py-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h3 class="text-xl font-semibold mb-4">Stay Updated</h3>
+                <div class="max-w-md mx-auto flex gap-4">
+                    <input type="email" placeholder="Enter your email" 
+                           class="flex-1 p-3 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                    <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+                        Subscribe
+                    </button>
+                </div>
+                <div class="mt-8 text-gray-600">
+                    <p>© 2024 Sitare University. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
